@@ -1,0 +1,13 @@
+*.pro.user*
+main
+*.png
+*.pyc
+**/.vscode/**
+*.weights
+**/data_aware
+**/stateful
+**/heterogenic
+**/stateless
+**/cdeepso1
+**/cdeepso2
+**/cdeepso3

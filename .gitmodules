@@ -1,0 +1,3 @@
+[submodule "wup"]
+	path = wup
+	url = git@github.com:diegofps/wup.git
