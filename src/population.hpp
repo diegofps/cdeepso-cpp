@@ -31,18 +31,14 @@ public:
     cloneFrom(const Population & other)
     {
         for (size_t i=0;i!=particles.numRows();++i)
-        {
             weights[i] = other.weights[i];
-        }
 
         for (size_t i=0;i!=particles.numRows();++i)
-        {
             for (size_t j=0;j!=particles.numCols();++j)
             {
                 particles(i,j) = other.particles(i,j);
                 velocity(i,j) = other.velocity(i,j);
             }
-        }
 
 //        copy(other.pos.begin(), other.pos.end(), pos.begin());
 //        copy(other.vel.begin(), other.vel.end(), vel.begin());

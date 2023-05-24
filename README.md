@@ -13,7 +13,7 @@ This is a fast c++ implementation of the C-DEEPSO algorithm. It was inspired by 
 Clone the repository and its submodule (wup).
 
 ```shell
-git clone --submodule git@github.com:diegofps/cdeepso-cpp.git
+git clone --recurse-submodules git@github.com:diegofps/cdeepso-cpp.git
 ```
 
 Access the src folder and type make to build the example.
@@ -71,7 +71,69 @@ Running it.
 
 # Performance results
 
-The following results were obtained in a machine running Ubuntu 20.04.4 LTS, AMD Threadripper 2990WX and 128GB of RAM. The number of threads was 64 (-threads) and we executed CDEEPSO 100 times (-maxRun).
+# Results 2 (2023)
+
+The following results were obtained in a machine running Ubuntu 22.04.2 LTS, AMD Threadripper 2990WX and 128GB of RAM. The parameters used are shown in the command lines bellow the table.
+
+| Function | Mean fitness (std) | Execution time in ms (std) |
+| -------- | ------------------ | -------------------------- |
+| ras      |  4.94 (4.59)       | 498.23 (20.72)             |
+| ros      | 95.00 (1.27)       | 312.46 (20.74)             |
+| gri      |  0.00 (0.00)       | 454.37 (20.56)             |
+
+```shell
+# RAS
+./main \
+    -maxFitEval 100000 \
+    -maxGen 50000 \
+    -popSize 50 \
+    -dims 100 \
+    -memGBestSize 5 \
+    -eval ras \
+    -memStrategy POS_MEM \
+    -deType RAND \
+    -mutationRate 0.5 \
+    -communicationProbability 0.1 \
+    -printConvergenceResults 0 \
+    -maxRun 1000 \
+    -threads 64
+
+# ROS
+./main \
+    -maxFitEval 100000 \
+    -maxGen 50000 \
+    -popSize 50 \
+    -dims 100 \
+    -memGBestSize 5 \
+    -eval ros \
+    -memStrategy POS_MEM \
+    -deType RAND \
+    -mutationRate 0.5 \
+    -communicationProbability 0.1 \
+    -printConvergenceResults 0 \
+    -maxRun 1000 \
+    -threads 64
+
+# GRI
+./main \
+    -maxFitEval 100000 \
+    -maxGen 50000 \
+    -popSize 50 \
+    -dims 100 \
+    -memGBestSize 5 \
+    -eval gri \
+    -memStrategy POS_MEM \
+    -deType RAND \
+    -mutationRate 0.5 \
+    -communicationProbability 0.1 \
+    -printConvergenceResults 0 \
+    -maxRun 1000 \
+    -threads 64
+```
+
+# Results 1 (2020)
+
+The following results were obtained in a machine running Ubuntu 20.04.4 LTS, AMD Threadripper 2990WX and 128GB of RAM. The number of threads was 64 (-threads), the particles had 50 dimensions (-dims), and we executed CDEEPSO 100 times (-maxRun).
 
 | Function | Mean fitness | Std fitness | Execution time (ms) |
 | -------- | ------------ | ----------- | ------------------- |
